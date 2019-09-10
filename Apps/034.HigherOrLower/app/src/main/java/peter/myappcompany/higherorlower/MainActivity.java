@@ -12,7 +12,6 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-
     protected int intTarget;
     protected TextView txtInstructions;
     protected int intLowerBound = 1;
