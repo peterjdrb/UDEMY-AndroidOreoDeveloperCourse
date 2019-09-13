@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     final int maxSeconds = secondsPerMin * maxMinutes;
 
     int currentTime;
+    boolean timerIsActive = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +88,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnGoPressed (View view){
         Button btn = findViewById(R.id.btnGo);
-        int tag = Integer.parseInt(btn.getTag().toString());
+        
+        if (timerIsActive) {
+            timerBar.setEnabled(true);
+            timerIsActive = false;
+            btn.setText("Go!");
+            timer.cancel();
+            timerBar.setProgress(currentTime);
 
-        if (tag == 1) {
+            if (sound.isPlaying()) {
+                sound.stop();
+            }
+
+        } else {
             timerBar.setEnabled(false);
-            btn.setTag(2);
+            timerIsActive = true;
             btn.setText("Stop");
 
             timer = new CountDownTimer(currentTime*1000,1000){
@@ -108,16 +119,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }.start();
 
-        } else {
-            timerBar.setEnabled(true);
-            btn.setTag(1);
-            btn.setText("Go!");
-            timer.cancel();
-            timerBar.setProgress(currentTime);
-
-            if (sound.isPlaying()) {
-                sound.stop();
-            }
         }
     }
 }

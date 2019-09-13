@@ -13,7 +13,6 @@
         android:layout_marginTop="16dp"
         android:onClick="btnGoPressed"
         android:text="Go!"
-        android:tag="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTimer" />
