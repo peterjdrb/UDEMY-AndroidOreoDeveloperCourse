@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     final int defaultTime = 30;
     final int secondsPerMin = 60;
-    final int maxMinutes = 10;
+    final int maxMinutes = 60;
     final int minSeconds = 0;
     final int maxSeconds = secondsPerMin * maxMinutes;
 
@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
         //Set timerText;
         timerText = findViewById(R.id.txtTimer);
         setTimerText();
+
+        //Set up sound ready to be played once the time is up
+        sound = MediaPlayer.create(MainActivity.this, R.raw.alarm);
     }
 
     private void setTimerText() {
@@ -101,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    sound = MediaPlayer.create(MainActivity.this, R.raw.alarm);
                     sound.start();
                 }
             }.start();
@@ -111,7 +113,11 @@ public class MainActivity extends AppCompatActivity {
             btn.setTag(1);
             btn.setText("Go!");
             timer.cancel();
+            timerBar.setProgress(currentTime);
 
+            if (sound.isPlaying()) {
+                sound.stop();
+            }
         }
     }
 }
