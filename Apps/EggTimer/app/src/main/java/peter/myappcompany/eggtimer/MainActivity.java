@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer sound;
     CountDownTimer timer;
 
-    final int defaultTime = 30;
+    final int defaultTimeInSeconds = 30; //in seconds
     final int secondsPerMin = 60;
     final int maxMinutes = 60;
     final int minSeconds = 0;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         timerBar = findViewById(R.id.timerBar);
         timerBar.setMin(minSeconds);
         timerBar.setMax(maxSeconds);
-        timerBar.setProgress(defaultTime);
+        timerBar.setProgress(defaultTimeInSeconds);
         currentTime = timerBar.getProgress();
 
         timerBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
