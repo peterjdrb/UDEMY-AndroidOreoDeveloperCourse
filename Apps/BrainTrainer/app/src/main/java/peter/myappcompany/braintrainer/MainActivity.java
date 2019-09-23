@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupNextQuestion (){
         //Get a new equation and possible answers
         generateSum();
-        generateCorrectAnswerIndex();
+        intCorrectAnswerIndex = generateRandomNumber(0,3);
         setupAnswerArray();
 
         //Set all appropriate text
@@ -176,10 +176,6 @@ public class MainActivity extends AppCompatActivity {
                 intPossibleAnswers[i] = intPossibleAnswer;
             }
         }
-    }
-
-    private void generateCorrectAnswerIndex() {
-        intCorrectAnswerIndex = generateRandomNumber(0,3);
     }
 
     private void generateSum() {
