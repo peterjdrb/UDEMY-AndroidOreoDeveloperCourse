@@ -156,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupAnswerArray() {
+        intPossibleAnswers = new int[]{0, 0, 0, 0};
+        
         for (int i=0; i<intPossibleAnswers.length; i++) {
             if (i == intCorrectAnswerIndex) {
                 intPossibleAnswers[i] = intCorrectAnswer;
@@ -163,9 +165,11 @@ public class MainActivity extends AppCompatActivity {
                 intPossibleAnswer = intCorrectAnswer;
                 boolean boolNumberExists = false;
                 while (intPossibleAnswer == intCorrectAnswer || boolNumberExists == true){
+                    //generate random number
                     intPossibleAnswer = generateRandomNumber(intCorrectAnswer-10,intCorrectAnswer+10);
-                    boolNumberExists = false;
 
+                    //Check random number isn't already an incorrect answer
+                    boolNumberExists = false;
                     for (int n : intPossibleAnswers) {
                         if (n == intPossibleAnswer) {
                             boolNumberExists = true;
